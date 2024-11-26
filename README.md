@@ -8,6 +8,7 @@ A collection of Python programming exercises to practice and demonstrate skills 
   - Example: FizzBuzz, factorial calculation, list manipulations.
 - **data_analysis/**: Scripts for handling and visualizing data.
   - Example: Reading CSV files, data plotting with Matplotlib.
+- **data_science/**
 - **tests/**: Unit tests for validating the correctness of the exercises.
 
 ## Highlights
