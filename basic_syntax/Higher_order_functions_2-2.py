@@ -1,37 +1,46 @@
 import pandas as pd
 import numpy as np
+import requests
+from io import StringIO
 
 # URLs of the CSV files
 url_par = 'https://raw.githubusercontent.com/ethanwhite/progbio/master/data/sar_model_data.csv'
 url_area = 'https://raw.githubusercontent.com/ethanwhite/progbio/master/data/sar_areas.csv'
 
-# Fetch the parameters CSV file content using pd.read_csv
-df_par = pd.read_csv(url_par, header=None, names=['ID', 'b0', 'b1', 'b2'])
+# Fetch the parameters CSV file content using requests
+response_par = requests.get(url_par)
+data_par = response_par.text
+
+response_area = requests.get(url_area)
+data_area = response_area.text
+
+df_par = pd.read_csv(StringIO(data_par), header=None, names=['ID', 'b0', 'b1', 'b2'])
 
 # Fill missing b2 values with NaN
-df_par['b2'] = df_par['b2'].fillna(np.nan)
+df_par['b2'] = df_par['b2'].fillna('NaN')
 
-# Fetch the areas CSV file content using pd.read_csv
-df_area = pd.read_csv(url_area, header=None, names=['Area'])
-
-# Print the DataFrames to verify
+# Print the DataFrame to verify
 print(df_par)
+
+df_area = pd.read_csv(StringIO(data_area), header=None, names=['Area'])
+
+# Print the DataFrame to verify
 print(df_area)
 
 def power(area, b0, b1, b2=None):
-    return b0 * area ** b1
+    return float(b0) * (area ** float(b1))
 
 def power_quadratic(area, b0, b1, b2):
-    return 10 ** (b0 + b1 * np.log10(area) + b2 * (np.log10(area) ** 2))
+    return 10 ** (float(b0) + float(b1) * np.log10(area) + float(b2) * (np.log10(area) ** 2))
 
 def logarithmic(area, b0, b1, b2=None):
-    return b0 + b1 * np.log(area)
+    return float(b0) + float(b1) * np.log(area)
 
 def michaelis_menten(area, b0, b1, b2=None):
-    return b0 * area / (b1 + area)
+    return float(b0) * area / (float(b1) + area)
 
 def lomolino(area, b0, b1, b2):
-    return b0 / (1 + b1 ** (np.log10(area) ** (b2 / area)))
+    return float(b0) / (1 + float(b1) ** (np.log(area) ** (float(b2) / area)))
 
 models = {
     'Power': power,
@@ -54,8 +63,6 @@ for area in df_area['Area']:
     mean_richness = np.mean(richness)
     results.append([area, mean_richness])
 
-# Create a new dataframe to store the results
-results = pd.DataFrame(results, columns=['Area', 'Mean Predicted Richness'])
-
 # Convert results to DataFrame and save to CSV
-results.to_csv(r"C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\SVNwc\assignment_directory\predicted_richness.csv", index=False)
+results_df = pd.DataFrame(results, columns=['Area', 'Mean Predicted Richness'])
+results_df.to_csv('predicted_richness.csv', index=False)
