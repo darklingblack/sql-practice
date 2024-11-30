@@ -16,6 +16,12 @@ results = mse.estimate_species_richness(areas, custom_params)
 for result in results:
     print(f"Area: {result[0]}, Estimated Richness: {result[1]}")
 
+mse.power(15, 7, 9)
+
+power = mse.power
+
+power(15, 7, 9)
+
 # In script_equations there are the algorithm for each custom parameter
 # In main_script_equation there is the code to how calculate each area for each parameter in each custom
 # At the end it is just possible to change the area value and have the result immediatly
