@@ -29,6 +29,10 @@ Platypus("supafly", [19,1,2,1,0,0,0,1])]
 
 print(platypi)
 
+newlist = []
+newlist = [n.name for n in platypi if any(p > 3 for p in n.eggs_laid)]
+print(newlist)
+
 # Example usage
 
 print(platypi.name)          # Output: "perry"
