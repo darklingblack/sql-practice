@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 from itertools import combinations
 
-file_path = r'C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\TGPP_pres.csv'
+file_path = 'TGPP_pres.csv'
 
-output_file = r'C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\jaccard.csv'
+output_file = 'jaccard.csv'
 
 data = pd.read_csv(file_path)
 
@@ -19,7 +19,7 @@ num_unique_plot = unique_plot.size
 
 # The apply(set) method in the context of a pandas DataFrame or Series is used to apply the Python set constructor to each element in the Series. 
 # This is particularly useful when you want to transform lists or collections of items within each group into sets.
-speceS_by_year_output = r'C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\speceS_by_year_output.csv'
+speceS_by_year_output = 'speces_by_year_output.csv'
 
 species_by_site_year = df.groupby(['plot', 'year'])['spcode'].apply(set).reset_index()
 
