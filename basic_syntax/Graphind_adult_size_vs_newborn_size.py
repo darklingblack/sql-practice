@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-file_path = r'C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\Mammal_lifehistories_v2.txt'
+file_path = 'Mammal_lifehistories_v2.txt'
 
 dataset = pd.read_csv(file_path, delimiter='\t', skipfooter=7, na_values=['-999', '-999.00']) # or just 
 df = pd.DataFrame(dataset)
