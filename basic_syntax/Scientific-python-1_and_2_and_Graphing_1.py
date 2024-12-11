@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-file_path = r'C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\MOMv3.3.txt'
+file_path = 'MOMv3.3.txt'
 
 dataset = pd.read_csv(file_path, delimiter='\t') # or just 
 df = pd.DataFrame(dataset)
