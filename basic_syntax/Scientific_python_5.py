@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import csv
 
-file_path = r'C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\MOMv3.3.txt'
+file_path = 'MOMv3.3.txt'
 columns = ["continent", "status", "order", "family", "genus", "species", "log_mass", "mass", "reference"]
 data = pd.read_csv(file_path, delimiter='\t', names=columns, header=None)
 
