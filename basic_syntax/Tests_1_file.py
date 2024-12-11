@@ -3,7 +3,6 @@
 import urllib.request
 import csv
 import pandas as pd
-from io import StringIO
 
 def get_gc_content(dnaseq):
     dnaseq = dnaseq.replace("\n", "").replace("\r", "").upper()
