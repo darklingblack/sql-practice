@@ -112,13 +112,13 @@ bash predict_richness.sh
 
 # Move the file to the working directory first
 
-mv Shell_2-2.py "C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\SVNwc\assignment_directory"
+mv Shell_2-2.py "assignment_directory"
 
 # Or this 
 
-mv Shell_2-2.py "SVNwc/assignment_directory"
+mv Shell_2-2.py "assignment_directory"
 
-cd "C:\Users\barba\OneDrive - University College London\Bioinformatics\BIoPythonTraining\Programming for Biologists\SVNwc\assignment_directory"
+cd "assignment_directory"
 
 ########################################################################################
 #!/bin/bash
